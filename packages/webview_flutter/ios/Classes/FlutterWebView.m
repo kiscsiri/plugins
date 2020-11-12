@@ -316,7 +316,6 @@
 // Returns nil when successful, or an error message when one or more keys are unknown.
 - (NSString*)applySettings:(NSDictionary<NSString*, id>*)settings {
   NSMutableArray<NSString*>* unknownKeys = [[NSMutableArray alloc] init];
-  _webView.configuration.allowsInlineMediaPlayback = true;
   for (NSString* key in settings) {
     if ([key isEqualToString:@"jsMode"]) {
       NSNumber* mode = settings[key];
@@ -333,6 +332,9 @@
     } else if ([key isEqualToString:@"userAgent"]) {
       NSString* userAgent = settings[key];
       [self updateUserAgent:[userAgent isEqual:[NSNull null]] ? nil : userAgent];
+    } else if ([key isEqualToString:@"allowsInlineMediaPlayback"]) {
+      NSNumber* allowsInlineMediaPlayback = settings[key];
+      _webView.configuration.allowsInlineMediaPlayback = [allowsInlineMediaPlayback boolValue];
     } else {
       [unknownKeys addObject:key];
     }
