@@ -367,6 +367,9 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
             webView.setWebContentsDebuggingEnabled(debuggingEnabled);
           }
           break;
+        case "allowsInlineMediaPlayback":
+          // no-op inline media playback is always allowed on Android.
+          break;
         case "gestureNavigationEnabled":
           break;
         case "userAgent":
