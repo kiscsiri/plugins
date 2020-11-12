@@ -382,6 +382,7 @@ class WebSettings {
     this.hasNavigationDelegate,
     this.debuggingEnabled,
     this.gestureNavigationEnabled,
+    this.allowsInlineMediaPlayback,
     @required this.userAgent,
   }) : assert(userAgent != null);
 
@@ -396,6 +397,11 @@ class WebSettings {
   /// See also: [WebView.debuggingEnabled].
   final bool debuggingEnabled;
 
+  /// Whether to play HTML5 videos inline or use the native full-screen controller on iOS.
+  ///
+  /// This will have no effect on Android.
+  final bool allowsInlineMediaPlayback;
+  
   /// The value used for the HTTP `User-Agent:` request header.
   ///
   /// If [userAgent.value] is null the platform's default user agent should be used.
@@ -413,7 +419,7 @@ class WebSettings {
 
   @override
   String toString() {
-    return 'WebSettings(javascriptMode: $javascriptMode, hasNavigationDelegate: $hasNavigationDelegate, debuggingEnabled: $debuggingEnabled, gestureNavigationEnabled: $gestureNavigationEnabled, userAgent: $userAgent)';
+    return 'WebSettings(javascriptMode: $javascriptMode, hasNavigationDelegate: $hasNavigationDelegate, debuggingEnabled: $debuggingEnabled, userAgent: $userAgent, allowsInlineMediaPlayback: $allowsInlineMediaPlayback)';  
   }
 }
 
